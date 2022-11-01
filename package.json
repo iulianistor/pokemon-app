@@ -8,7 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "stylelint": "ng run poke-app:stylelint"
+    "stylelint": "ng run poke-app:stylelint",
+    "stylelint-check": "stylelint-config-prettier-check"
   },
   "private": true,
   "dependencies": {
