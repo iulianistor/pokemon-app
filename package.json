@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
+    "test": "ng test --no-watch",
+    "test:ci": "ng test --watch=false --browsers ChromeHeadless",
     "lint": "ng lint",
     "stylelint": "ng run poke-app:stylelint",
     "stylelint-check": "stylelint-config-prettier-check"

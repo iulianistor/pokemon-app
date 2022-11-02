@@ -2,3 +2,7 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 npx --no -- commitlint --edit 
+
+ng build
+ng lint
+npm run-script stylelint
