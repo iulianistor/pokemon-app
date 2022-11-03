@@ -1,0 +1,42 @@
+@use "../../styles/theme/colors";
+
+.card {
+  background-color: colors.$card-background;
+  width: 14.625rem;
+  height: 22.938rem;
+}
+
+.card img {
+  max-width: 90%;
+  max-height: 90%;
+  margin-left: 0.625rem;
+  margin-right: 0.625rem;
+  margin-bottom: 18%;
+}
+
+.card table {
+  padding-left: 1.25rem;
+}
+
+.card table > tr > td {
+  padding-bottom: 20%;
+}
+
+.card table > tr > td:first-child {
+  font-weight: bolder;
+}
+
+.card table > tr > td:last-child {
+  padding-left: 1.875rem;
+}
+
+.card h1 {
+  text-align: center;
+  font-size: large;
+  padding-top: 0.938rem;
+  padding-bottom: 1.25rem;
+}
+
+.card p {
+  font-weight: bold;
+}
