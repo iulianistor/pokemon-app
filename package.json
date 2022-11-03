@@ -10,7 +10,8 @@
     "test:ci": "ng test --watch=false --browsers ChromeHeadless",
     "lint": "ng lint",
     "stylelint": "ng run poke-app:stylelint",
-    "stylelint-check": "stylelint-config-prettier-check"
+    "stylelint-check": "stylelint-config-prettier-check",
+    "prepare": "husky install"
   },
   "private": true,
   "dependencies": {
