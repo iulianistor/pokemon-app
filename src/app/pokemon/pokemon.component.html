@@ -1,14 +1,19 @@
 <div class="card">
-  <h1>{{ name }}</h1>
+  <h1>{{ pokemonData.name }}</h1>
   <img src="{{ image }}" alt="{{ name }}" />
   <table>
     <tr>
       <td>Height</td>
-      <td>{{ height }}</td>
+      <td>{{ pokemonData.height }}</td>
     </tr>
     <tr>
       <td>Weight</td>
-      <td>{{ weight }}</td>
+      <td>{{ pokemonData.weight }}</td>
     </tr>
   </table>
+</div>
+
+<div>
+  <p>API data</p>
+  {{ pokemonData | json }}
 </div>
