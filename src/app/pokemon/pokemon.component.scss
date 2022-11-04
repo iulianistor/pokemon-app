@@ -1,25 +1,26 @@
 @use "../../styles/theme/colors";
+@use "../../styles/theme/spacing";
 
 .card {
   background-color: colors.$card-background;
-  width: 14.625rem;
-  height: 22.938rem;
+  width: 15rem;
+  height: 23rem;
+  padding: spacing.$space-sm;
 }
 
 .card img {
-  max-width: 90%;
-  max-height: 90%;
-  margin-left: 0.625rem;
-  margin-right: 0.625rem;
-  margin-bottom: 18%;
+  width: 100%;
+  height: auto;
+  margin-bottom: 5%;
 }
 
 .card table {
-  padding-left: 1.25rem;
+  padding-left: spacing.$space-md;
 }
 
 .card table > tr > td {
-  padding-bottom: 20%;
+  padding-bottom: 5%;
+  padding-top: 10%;
 }
 
 .card table > tr > td:first-child {
@@ -27,16 +28,13 @@
 }
 
 .card table > tr > td:last-child {
-  padding-left: 1.875rem;
+  padding-left: 1.9rem;
 }
 
 .card h1 {
   text-align: center;
   font-size: large;
-  padding-top: 0.938rem;
+  padding-top: 1rem;
   padding-bottom: 1.25rem;
-}
-
-.card p {
-  font-weight: bold;
+  margin-top: 0;
 }
