@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonDataService } from '../services/pokemon-data.service';
+import { PokemonType } from './pokemon';
 
 @Component({
   selector: 'pka-pokemon',
@@ -7,7 +8,7 @@ import { PokemonDataService } from '../services/pokemon-data.service';
   styleUrls: ['./pokemon.component.scss'],
 })
 export class PokemonComponent implements OnInit {
-  pokemonData: any;
+  pokemonData!: PokemonType;
 
   constructor(private pokemonDataService: PokemonDataService) {}
 
@@ -16,9 +17,4 @@ export class PokemonComponent implements OnInit {
       this.pokemonData = data;
     });
   }
-
-  name = 'Bulbasaur';
-  // height = 7;
-  // weight = 69;
-  // image = './../../assets/images/bulbasaur.png';
 }
