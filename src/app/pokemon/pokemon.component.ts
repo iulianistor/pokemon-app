@@ -18,7 +18,7 @@ export class PokemonComponent implements OnInit {
   }
 
   name = 'Bulbasaur';
-  height = 7;
-  weight = 69;
-  image = './../../assets/images/bulbasaur.png';
+  // height = 7;
+  // weight = 69;
+  // image = './../../assets/images/bulbasaur.png';
 }
