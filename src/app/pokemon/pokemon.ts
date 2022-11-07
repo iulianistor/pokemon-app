@@ -1,9 +1,3 @@
-// export type PokemonType = {
-//   name: string;
-//   weight: number;
-//   height: number;
-// };
-
 export interface PokemonType {
   abilities: Ability[];
   base_experience: number;
