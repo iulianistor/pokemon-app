@@ -24,7 +24,7 @@ describe('PokemonDataService', () => {
   });
 
   it('should call the HTTP GET method for the given API', () => {
-    service.getData().subscribe((item) => {
+    service.getPokemonData().subscribe((item) => {
       // This verifies the observable when it resolves and checks if its result matches the mock data
       expect(item).toEqual(pokemonMock);
     });
