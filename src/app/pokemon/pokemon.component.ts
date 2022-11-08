@@ -8,7 +8,7 @@ import { PokemonType } from './pokemon';
   styleUrls: ['./pokemon.component.scss'],
 })
 export class PokemonComponent implements OnInit {
-  pokemonData!: PokemonType;
+  pokemonData: PokemonType = { name: '', height: 0, weight: 0, src: '' };
 
   constructor(private pokemonDataService: PokemonDataService) {}
 

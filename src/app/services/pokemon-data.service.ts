@@ -2,8 +2,17 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { PokemonType } from '../pokemon/pokemon';
+import { PokemonDataType, PokemonType } from '../pokemon/pokemon';
+import { map } from 'rxjs/operators';
 
+function transformToPokemonType(pokemonData: PokemonDataType): PokemonType {
+  return {
+    name: pokemonData.name,
+    weight: pokemonData.weight,
+    height: pokemonData.height,
+    src: pokemonData.sprites.other.dream_world.front_default,
+  };
+}
 @Injectable({
   providedIn: 'root',
 })
@@ -11,6 +20,10 @@ export class PokemonDataService {
   private apiURL = environment.baseUrl;
   constructor(private http: HttpClient) {}
   getPokemonData(): Observable<PokemonType> {
-    return this.http.get<PokemonType>(`${this.apiURL}/1`);
+    const data = this.http
+      .get<PokemonDataType>(`${this.apiURL}/1`)
+      .pipe(map(transformToPokemonType));
+
+    return data;
   }
 }

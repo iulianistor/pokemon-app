@@ -1,4 +1,4 @@
-export interface PokemonType {
+export interface PokemonDataType {
   abilities: Ability[];
   base_experience: number;
   forms: Form[];
@@ -17,6 +17,13 @@ export interface PokemonType {
   stats: Stat[];
   types: Type[];
   weight: number;
+}
+
+export interface PokemonType {
+  height: number;
+  name: string;
+  weight: number;
+  src: string;
 }
 
 export interface Ability {
