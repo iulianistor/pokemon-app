@@ -5,7 +5,9 @@ import { environment } from 'src/environments/environment';
 import { PokemonDataType, PokemonType } from '../pokemon/pokemon';
 import { map } from 'rxjs/operators';
 
-function transformToPokemonType(pokemonData: PokemonDataType): PokemonType {
+export function transformToPokemonType(
+  pokemonData: PokemonDataType
+): PokemonType {
   return {
     name: pokemonData.name,
     weight: pokemonData.weight,
