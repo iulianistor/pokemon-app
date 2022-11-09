@@ -1,6 +1,10 @@
-import { HttpClient } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpResponse,
+  HttpErrorResponse,
+} from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { PokemonDataType, PokemonType } from '../pokemon/pokemon';
 import { map } from 'rxjs/operators';
@@ -28,4 +32,7 @@ export class PokemonDataService {
 
     return data;
   }
+  // private handleError(error: HttpErrorResponse) {
+  //   return throwError('Error occured. Try again!');
+  // }
 }

@@ -30,22 +30,23 @@ describe('PokemonDataService', () => {
     );
   });
 
-  // it('should return the transformed mock data', () => {
-  //   service.getPokemonData().subscribe((item) => {
-  //     // This verifies the observable when it resolves and checks if its result matches the mock data
-  //     expect(item).toEqual(pokemonMockTransformed);
-  //   });
+  it('should test the HTTP GET request', (done: DoneFn) => {
+    service.getPokemonData().subscribe((item) => {
+      // This verifies the observable when it resolves and checks if its result matches the mock data
+      expect(item).toEqual(pokemonMockTransformed);
+      done();
+    });
 
-  //   // Expect that a single request has been made which matches the given URL, and return its mock.
-  //   // If no such request has been made, or more than one such request has been made,
-  //   // fail with an error message including the given request description, if any.
-  //   const req = httpMock.expectOne('https://pokeapi.co/api/v2/pokemon/1');
-  //   // Check if the request is GET
-  //   expect(req.request.method).toEqual('GET');
-  //   // Check if the correct data was resturned using subscribe callback
-  //   req.flush(pokemonMockTransformed);
-  //   // Checks that all requests are fulfilled and there is noting outstanding
-  //   httpMock.verify();
-  //   expect(service).toBeTruthy();
-  // });
+    // Expect that a single request has been made which matches the given URL, and return its mock.
+    // If no such request has been made, or more than one such request has been made,
+    // fail with an error message including the given request description, if any.
+    const req = httpMock.expectOne('https://pokeapi.co/api/v2/pokemon/1');
+    // Check if the request is GET
+    expect(req.request.method).toEqual('GET');
+    // Check if the correct data was resturned using subscribe callback
+    req.flush(pokemonMockResponse);
+    // Checks that all requests are fulfilled and there is noting outstanding
+    // httpMock.verify();
+    expect(service).toBeTruthy();
+  });
 });

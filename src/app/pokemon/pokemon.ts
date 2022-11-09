@@ -25,7 +25,6 @@ export interface PokemonType {
   weight: number;
   src: string;
 }
-
 export interface Ability {
   ability: Ability2;
   is_hidden: boolean;
