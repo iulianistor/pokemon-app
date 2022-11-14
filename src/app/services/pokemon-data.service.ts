@@ -32,7 +32,4 @@ export class PokemonDataService {
 
     return data;
   }
-  // private handleError(error: HttpErrorResponse) {
-  //   return throwError('Error occured. Try again!');
-  // }
 }
