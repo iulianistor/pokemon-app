@@ -18,5 +18,6 @@ export class PokemonCollectionComponent implements OnInit {
           this.pokemonNames.push(result.name);
         });
       });
+    console.log(this.pokemonNames);
   }
 }
