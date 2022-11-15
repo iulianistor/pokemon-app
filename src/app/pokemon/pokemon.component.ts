@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { PokemonDataService } from '../services/pokemon-data.service';
-import { PokemonType } from './pokemon';
+import { PokemonType } from './types';
 
 @Component({
   selector: 'pka-pokemon',
@@ -8,6 +8,8 @@ import { PokemonType } from './pokemon';
   styleUrls: ['./pokemon.component.scss'],
 })
 export class PokemonComponent implements OnInit {
+  @Input() parentData: any;
+
   pokemonData: PokemonType = { name: '', height: 0, weight: 0, src: '' };
 
   constructor(private pokemonDataService: PokemonDataService) {}
@@ -20,5 +22,6 @@ export class PokemonComponent implements OnInit {
     this.pokemonDataService.getPokemonData().subscribe((data) => {
       (this.pokemonData = data), (error: any) => console.log(error);
     });
+    console.log('Data from parent: ', this.parentData);
   }
 }

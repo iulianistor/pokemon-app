@@ -6,7 +6,7 @@ import {
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { PokemonDataType, PokemonType } from '../pokemon/pokemon';
+import { PokemonDataType, PokemonType } from '../pokemon/types';
 import { map } from 'rxjs/operators';
 
 export function transformToPokemonType(
@@ -28,6 +28,20 @@ export class PokemonDataService {
   getPokemonData(): Observable<PokemonType> {
     const data = this.http
       .get<PokemonDataType>(`${this.apiURL}/1`)
+      .pipe(map(transformToPokemonType));
+
+    return data;
+  }
+
+  getPokemonCollectionData() {
+    return this.http.get<PokemonDataType[]>(
+      `https://pokeapi.co/api/v2/pokemon?limit=12`
+    );
+  }
+
+  getPokemonDataUpdated(name: string): Observable<PokemonType> {
+    const data = this.http
+      .get<PokemonDataType>(`${this.apiURL}/${name}`)
       .pipe(map(transformToPokemonType));
 
     return data;

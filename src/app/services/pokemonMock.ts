@@ -1,4 +1,4 @@
-import { PokemonDataType, PokemonType } from '../pokemon/pokemon';
+import { PokemonDataType, PokemonType } from '../pokemon/types';
 
 export const pokemonMockTransformed: PokemonType = {
   name: 'bulbasaur',
