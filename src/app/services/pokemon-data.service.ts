@@ -1,10 +1,6 @@
-import {
-  HttpClient,
-  HttpResponse,
-  HttpErrorResponse,
-} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { PokemonDataType, PokemonType } from '../pokemon/types';
 import { map } from 'rxjs/operators';
@@ -25,7 +21,8 @@ export function transformToPokemonType(
 export class PokemonDataService {
   private apiURL = environment.baseUrl;
   constructor(private http: HttpClient) {}
-  getPokemonData(): Observable<PokemonType> {
+
+  getPokemonData(name: string): Observable<PokemonType> {
     const data = this.http
       .get<PokemonDataType>(`${this.apiURL}/1`)
       .pipe(map(transformToPokemonType));

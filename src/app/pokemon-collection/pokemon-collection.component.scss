@@ -1,6 +1,5 @@
-.pokemon-grid {
-  display: grid;
-  grid-gap: 16px;
+.grid-container {
   padding: 20px;
-  grid-template-columns: repeat(auto-fix, minmax(23%, 1fr));
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }

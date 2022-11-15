@@ -1,24 +1,14 @@
 <div class="card">
-  <h1>{{ parentData.name | titlecase }}</h1>
-  <img src="{{ parentData.src }}" alt="{{ parentData.name }}" />
+  <h1>{{ pokemonData.name | titlecase }}</h1>
+  <img src="{{ pokemonData.src }}" alt="{{ pokemonData.name }}" />
   <table>
     <tr>
       <td>Height</td>
-      <td>{{ parentData.height }}</td>
+      <td>{{ pokemonData.height }}</td>
     </tr>
     <tr>
       <td>Weight</td>
-      <td>{{ parentData.weight }}</td>
+      <td>{{ pokemonData.weight }}</td>
     </tr>
   </table>
 </div>
-
-<!-- <div>
-  <p>Parent data</p>
-  {{ parentData.name }}
-</div> -->
-
-<!-- <div>
-  <p>API data</p>
-  {{ pokemonData | json }}
-</div> -->

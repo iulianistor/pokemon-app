@@ -8,7 +8,7 @@ import { PokemonType } from './types';
   styleUrls: ['./pokemon.component.scss'],
 })
 export class PokemonComponent implements OnInit {
-  @Input() parentData: any;
+  @Input() pokemonName: string = '';
 
   pokemonData: PokemonType = { name: '', height: 0, weight: 0, src: '' };
 
@@ -19,9 +19,10 @@ export class PokemonComponent implements OnInit {
   }
 
   onGetPokemon(): void {
-    this.pokemonDataService.getPokemonData().subscribe((data) => {
-      (this.pokemonData = data), (error: any) => console.log(error);
-    });
-    console.log('Data from parent: ', this.parentData);
+    this.pokemonDataService
+      .getPokemonDataUpdated(this.pokemonName)
+      .subscribe((data) => {
+        (this.pokemonData = data), (error: any) => console.log(error);
+      });
   }
 }
