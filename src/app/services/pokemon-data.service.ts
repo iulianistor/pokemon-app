@@ -2,7 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { PokemonDataType, PokemonType } from '../pokemon/types';
+import {
+  PokemonCollectionData,
+  PokemonDataType,
+  PokemonType,
+} from '../pokemon/types';
 import { map } from 'rxjs/operators';
 
 export function transformToPokemonType(
@@ -12,7 +16,18 @@ export function transformToPokemonType(
     name: pokemonData.name,
     weight: pokemonData.weight,
     height: pokemonData.height,
-    src: pokemonData.sprites.other.dream_world.front_default,
+    src: pokemonData.sprites.other['official-artwork'].front_default,
+  };
+}
+
+export function mapPokemonCollection(
+  pokemonCollectionData: PokemonCollectionData
+): PokemonCollectionData {
+  return {
+    count: pokemonCollectionData.count,
+    next: pokemonCollectionData.next,
+    previous: pokemonCollectionData.previous,
+    results: pokemonCollectionData.results,
   };
 }
 @Injectable({
@@ -30,9 +45,11 @@ export class PokemonDataService {
     return data;
   }
 
-  getPokemonCollectionData() {
-    return this.http.get<PokemonDataType[]>(
-      `https://pokeapi.co/api/v2/pokemon?limit=12`
-    );
+  getPokemonCollectionData(): Observable<PokemonCollectionData> {
+    const data = this.http
+      .get<PokemonCollectionData>(`https://pokeapi.co/api/v2/pokemon?limit=12`)
+      .pipe(map(mapPokemonCollection));
+
+    return data;
   }
 }

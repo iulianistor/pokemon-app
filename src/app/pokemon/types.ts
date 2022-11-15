@@ -1,3 +1,14 @@
+export interface PokemonCollectionData {
+  count: number;
+  next: string;
+  previous: null;
+  results: Result[];
+}
+
+export interface Result {
+  name: string;
+  url: string;
+}
 export interface PokemonDataType {
   abilities: Ability[];
   base_experience: number;
@@ -18,7 +29,6 @@ export interface PokemonDataType {
   types: Type[];
   weight: number;
 }
-
 export interface PokemonType {
   height: number;
   name: string;

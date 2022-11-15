@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PokemonCollectionData, Result } from '../pokemon/types';
 import { PokemonDataService } from '../services/pokemon-data.service';
 
 @Component({
@@ -8,16 +9,15 @@ import { PokemonDataService } from '../services/pokemon-data.service';
 })
 export class PokemonCollectionComponent implements OnInit {
   constructor(private pokemonDataService: PokemonDataService) {}
-  pokemonNames: any = [];
+  pokemonNames: string[] = [];
 
   ngOnInit(): void {
     this.pokemonDataService
       .getPokemonCollectionData()
-      .subscribe((response: any) => {
-        response.results.forEach((result: any) => {
+      .subscribe((response: PokemonCollectionData) => {
+        response.results.forEach((result: Result) => {
           this.pokemonNames.push(result.name);
         });
       });
-    console.log(this.pokemonNames);
   }
 }
