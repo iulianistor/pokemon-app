@@ -20,7 +20,7 @@ export class PokemonComponent implements OnInit {
 
   onGetPokemon(): void {
     this.pokemonDataService
-      .getPokemonDataUpdated(this.pokemonName)
+      .getPokemonData(this.pokemonName)
       .subscribe((data) => {
         (this.pokemonData = data), (error: any) => console.log(error);
       });

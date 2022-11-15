@@ -24,7 +24,7 @@ export class PokemonDataService {
 
   getPokemonData(name: string): Observable<PokemonType> {
     const data = this.http
-      .get<PokemonDataType>(`${this.apiURL}/1`)
+      .get<PokemonDataType>(`${this.apiURL}/${name}`)
       .pipe(map(transformToPokemonType));
 
     return data;
@@ -34,13 +34,5 @@ export class PokemonDataService {
     return this.http.get<PokemonDataType[]>(
       `https://pokeapi.co/api/v2/pokemon?limit=12`
     );
-  }
-
-  getPokemonDataUpdated(name: string): Observable<PokemonType> {
-    const data = this.http
-      .get<PokemonDataType>(`${this.apiURL}/${name}`)
-      .pipe(map(transformToPokemonType));
-
-    return data;
   }
 }
