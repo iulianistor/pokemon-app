@@ -2,10 +2,12 @@
 @use "../../styles/theme/spacing";
 
 .card {
-  background-color: colors.$card-background;
+  // background-color: colors.$card-background;
   width: 15rem;
   height: 23rem;
   padding: spacing.$space-sm;
+  border: solid #70d1ef;
+  border-width: 0.1rem;
 }
 
 .card img {
