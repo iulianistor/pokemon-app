@@ -1,11 +1,10 @@
-@use "../../styles/theme/colors";
+@use "../../styles/colors";
+@use "../../styles/spacing";
 
 .grid-container {
   display: inline-flex;
-  padding: 1rem;
+  padding: spacing.$space-normal;
   justify-content: center;
-
-  // margin-top: 1rem;
   background-color: colors.$card-background;
 }
 
