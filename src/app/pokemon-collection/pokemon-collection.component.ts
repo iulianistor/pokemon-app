@@ -11,13 +11,25 @@ export class PokemonCollectionComponent implements OnInit {
   constructor(private pokemonDataService: PokemonDataService) {}
   pokemonNames: string[] = [];
 
+  page: number = 1;
+  totalPokemons: number = 1;
+  pageOffset: number = 0;
+
   ngOnInit(): void {
+    this.getPokemons();
+  }
+
+  getPokemons() {
     this.pokemonDataService
-      .getPokemonCollectionData()
+      .getPokemonCollectionData(12, this.pageOffset)
       .subscribe((response: PokemonCollectionData) => {
+        this.totalPokemons = response.count;
         response.results.forEach((result: Result) => {
           this.pokemonNames.push(result.name);
         });
       });
+    this.pageOffset += 12;
+    console.log('page: ', this.page);
+    console.log('offset:', this.pageOffset);
   }
 }
