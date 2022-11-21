@@ -46,7 +46,7 @@ describe('PokemonComponent', () => {
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
-  it('should set pokemon from the service directly', () => {
+  it('should set second pokemon from the service directly', () => {
     spy = spyOn(service, 'getPokemonData').and.returnValue(
       of(pokemonMockTransformedSecond)
     );
