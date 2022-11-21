@@ -51,7 +51,9 @@ export class PokemonDataService {
   ): Observable<PokemonCollectionData> {
     const data = this.http
       .get<PokemonCollectionData>(
-        `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`
+        `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${
+          (offset - 1) * limit
+        }`
       )
       .pipe(map(mapPokemonCollection));
 

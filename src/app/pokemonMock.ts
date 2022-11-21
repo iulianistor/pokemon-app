@@ -1,4 +1,15 @@
-import { PokemonDataType, PokemonType } from '../pokemon/types';
+import {
+  PokemonCollectionData,
+  PokemonDataType,
+  PokemonType,
+} from './pokemon/types';
+
+export const pokemonCollectionMock: PokemonCollectionData = {
+  count: 1,
+  next: 'https://pokeapi.co/api/v2/pokemon?offset=20&limit=20',
+  previous: null,
+  results: [{ name: 'bulbasaur', url: 'link' }],
+};
 
 export const pokemonMockTransformed: PokemonType = {
   name: 'bulbasaur',

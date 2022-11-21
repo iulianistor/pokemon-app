@@ -2,3 +2,53 @@
 @use "./colors";
 @use "./spacing";
 @use "./typography";
+
+.ngx-pagination {
+  cursor: pointer;
+
+  li,
+  button {
+    color: colors.$button-text;
+    display: flex;
+    justify-content: space-between;
+    padding: spacing.$space-sm spacing.$space-sm;
+
+    a:hover {
+      background-color: colors.$page-number-hover;
+    }
+
+    &:first-child,
+    &:last-child {
+      background-color: colors.$button-background;
+      border-radius: 0.2rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: spacing.$space-sm spacing.$space-normal;
+
+      &:hover {
+        background-color: colors.$button-background-hover;
+      }
+
+      &.disabled {
+        background-color: colors.$button-disabled;
+        font-size: 0.75rem;
+        padding: spacing.$space-md spacing.$space-normal;
+      }
+
+      a {
+        color: colors.$button-text;
+
+        &:hover {
+          background: none;
+        }
+      }
+    }
+  }
+}
+
+.ngx-pagination .current {
+  margin: spacing.$space-normal spacing.$space-normal;
+  padding: spacing.$space-sm spacing.$space-normal !important;
+  text-align: center;
+  cursor: default;
+}

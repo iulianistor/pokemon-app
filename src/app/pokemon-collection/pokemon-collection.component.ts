@@ -14,6 +14,7 @@ export class PokemonCollectionComponent implements OnInit {
   page: number = 1;
   totalPokemons: number = 1;
   pageOffset: number = 0;
+
   ngOnInit(): void {
     this.getPokemons();
   }
@@ -21,14 +22,14 @@ export class PokemonCollectionComponent implements OnInit {
   //Could the limit (12) be an environment variable? We're using the number of items to be displayed on a page in several places
   getPokemons() {
     this.pokemonDataService
-      .getPokemonCollectionData(12, this.pageOffset)
+      .getPokemonCollectionData(12, this.page)
       .subscribe((response: PokemonCollectionData) => {
         this.totalPokemons = response.count;
         response.results.forEach((result: Result) => {
           this.pokemonNames.push(result.name);
         });
       });
-    this.pageOffset += 12;
+    // this.pageOffset += 12;
     console.log('page: ', this.page);
     console.log('offset:', this.pageOffset);
   }

@@ -1,7 +1,7 @@
 import {
   pokemonMockTransformed,
   pokemonMockTransformedSecond,
-} from '../services/pokemonMock';
+} from '../pokemonMock';
 import { PokemonDataService } from './../services/pokemon-data.service';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
@@ -25,7 +25,7 @@ describe('PokemonComponent', () => {
     component = fixture.componentInstance;
 
     service = TestBed.inject(PokemonDataService);
-    fixture.detectChanges();
+    // fixture.detectChanges();
   }));
 
   afterEach(() => {
@@ -40,7 +40,7 @@ describe('PokemonComponent', () => {
     spy = spyOn(service, 'getPokemonData').and.returnValue(
       of(pokemonMockTransformed)
     );
-    component.ngOnInit();
+    fixture.detectChanges();
 
     expect(component.pokemonData.height).toBe(7);
     expect(spy).toHaveBeenCalledTimes(1);
@@ -50,7 +50,8 @@ describe('PokemonComponent', () => {
     spy = spyOn(service, 'getPokemonData').and.returnValue(
       of(pokemonMockTransformedSecond)
     );
-    component.ngOnInit();
+    // component.ngOnInit();
+    fixture.detectChanges();
     expect(component.pokemonData.height).toBe(8);
     expect(spy).toHaveBeenCalledTimes(1);
   });
