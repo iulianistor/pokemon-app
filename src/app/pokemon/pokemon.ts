@@ -1,7 +1,7 @@
 export interface PokemonDataType {
   abilities: Ability[];
   base_experience: number;
-  forms: NameUrl[];
+  forms: NameAndUrl[];
   game_indices: Index[];
   height: number;
   held_items: any[];
@@ -12,10 +12,10 @@ export interface PokemonDataType {
   name: string;
   order: number;
   past_types: any[];
-  species: NameUrl;
+  species: NameAndUrl;
   sprites: Sprites;
-  stats: Stat[];
-  types: Type[];
+  stats: PokemonStat[];
+  types: PokemonCreatureTypeResource[];
   weight: number;
 }
 
@@ -26,36 +26,30 @@ export interface PokemonType {
   src: string;
 }
 
-//used
-interface NameUrl {
+interface NameAndUrl {
   name: string;
   url: string;
 }
-
-//used
 export interface Ability {
-  ability: NameUrl;
+  ability: NameAndUrl;
   is_hidden: boolean;
   slot: number;
 }
 
-//used
 export interface Index {
   game_index: number;
-  version: NameUrl;
+  version: NameAndUrl;
 }
 
-//used
 export interface Mfe {
-  move: NameUrl;
+  move: NameAndUrl;
   version_group_details: VersionGroupDetail[];
 }
 
-//used
 export interface VersionGroupDetail {
   level_learned_at: number;
-  move_learn_method: NameUrl;
-  version_group: NameUrl;
+  move_learn_method: NameAndUrl;
+  version_group: NameAndUrl;
 }
 
 interface FrontAndBack {
@@ -74,33 +68,27 @@ export interface Sprites extends FrontAndBack {
   versions: Versions;
 }
 
-//used
 export interface Other {
   dream_world: DreamWorld;
   home: Home;
   'official-artwork': OfficialArtwork;
 }
-
-//used
 export interface DreamWorld {
   front_default: string;
   front_female: any;
 }
 
-//used
 export interface Home extends DreamWorld {
   front_shiny: string;
   front_shiny_female: any;
 }
 
-//used
 export interface OfficialArtwork {
   front_default: string;
 }
 
-//used
 export interface Versions {
-  'generation-i': GenerationI; //done
+  'generation-i': GenerationI;
   'generation-ii': GenerationIi;
   'generation-iii': GenerationIii;
   'generation-iv': GenerationIv;
@@ -110,7 +98,6 @@ export interface Versions {
   'generation-viii': GenerationViii;
 }
 
-//used
 export interface GenerationI {
   'red-blue': Color;
   yellow: Color;
@@ -122,14 +109,12 @@ export interface ColorBasics {
   front_transparent: string;
 }
 
-//used
 export interface Color extends ColorBasics {
   back_gray: string;
   front_gray: string;
   back_transparent: string;
 }
 
-//used
 export interface GenerationIi {
   crystal: Crystal;
   gold: SilverGold;
@@ -144,7 +129,6 @@ export interface Crystal extends ColorBasics {
   back_transparent: string;
 }
 
-//used
 export interface SilverGold extends ColorBasics {
   back_shiny: string;
   front_shiny: string;
@@ -216,23 +200,16 @@ export interface UltraSunUltraMoon {
 }
 
 export interface GenerationViii {
-  icons: Icons2;
+  icons: Icons;
 }
 
-export interface Icons2 {
-  front_default: string;
-  front_female: any;
-}
-
-//used
-export interface Stat {
+export interface PokemonStat {
   base_stat: number;
   effort: number;
-  stat: NameUrl;
+  stat: NameAndUrl;
 }
 
-//used
-export interface Type {
+export interface PokemonCreatureTypeResource {
   slot: number;
-  type: NameUrl;
+  type: NameAndUrl;
 }

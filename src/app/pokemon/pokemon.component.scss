@@ -6,34 +6,36 @@
   width: 15rem;
   height: 23rem;
   padding: spacing.$space-sm;
-}
 
-.card img {
-  width: 100%;
-  height: auto;
-}
+  img {
+    width: 100%;
+    height: auto;
+  }
 
-.card table {
-  padding-left: spacing.$space-md;
-}
+  table {
+    padding-left: spacing.$space-md;
 
-.card table > tr > td {
-  padding-bottom: 5%;
-  padding-top: 10%;
-}
+    tr {
+      td {
+        padding-bottom: spacing.$space-sm;
+        padding-top: spacing.$space-sm;
 
-.card table > tr > td:first-child {
-  font-weight: bolder;
-}
+        &:first-child {
+          font-weight: bolder;
+        }
 
-.card table > tr > td:last-child {
-  padding-left: 1.9rem;
-}
+        &:last-child {
+          padding-left: 1.9rem;
+        }
+      }
+    }
+  }
 
-.card h1 {
-  text-align: center;
-  font-size: large;
-  padding-top: 1rem;
-  padding-bottom: 1.25rem;
-  margin-top: 0;
+  h1 {
+    text-align: center;
+    font-size: large;
+    padding-top: spacing.$space-normal;
+    padding-bottom: spacing.$space-lg;
+    margin-top: 0;
+  }
 }
