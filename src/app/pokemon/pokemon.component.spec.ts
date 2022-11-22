@@ -25,12 +25,7 @@ describe('PokemonComponent', () => {
     component = fixture.componentInstance;
 
     service = TestBed.inject(PokemonDataService);
-    // fixture.detectChanges();
   }));
-
-  afterEach(() => {
-    spy = null as any;
-  });
 
   it('should create', () => {
     expect(component).toBeTruthy();
@@ -41,16 +36,14 @@ describe('PokemonComponent', () => {
       of(pokemonMockTransformed)
     );
     fixture.detectChanges();
-
     expect(component.pokemonData.height).toBe(7);
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
-  it('should set pokemon from the service directly', () => {
+  it('should set second pokemon from the service directly', () => {
     spy = spyOn(service, 'getPokemonData').and.returnValue(
       of(pokemonMockTransformedSecond)
     );
-    // component.ngOnInit();
     fixture.detectChanges();
     expect(component.pokemonData.height).toBe(8);
     expect(spy).toHaveBeenCalledTimes(1);

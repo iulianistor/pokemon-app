@@ -1,5 +1,7 @@
 # PokeApp
 
+This project is build as an Angular learning pathway with data consumed from the [PokeAPI](https://pokeapi.co/docs/v2). The first iterations are about setting up the app, displaying a list of pokemons and using pagination to browse through them.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.7.
 
 ## Development server
