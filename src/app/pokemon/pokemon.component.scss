@@ -1,0 +1,41 @@
+@use "../../styles/theme/colors";
+@use "../../styles/theme/spacing";
+
+.card {
+  background-color: colors.$card-background;
+  width: 15rem;
+  height: 23rem;
+  padding: spacing.$space-sm;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  table {
+    padding-left: spacing.$space-md;
+
+    tr {
+      td {
+        padding-bottom: spacing.$space-sm;
+        padding-top: spacing.$space-sm;
+
+        &:first-child {
+          font-weight: bolder;
+        }
+
+        &:last-child {
+          padding-left: 1.9rem;
+        }
+      }
+    }
+  }
+
+  h1 {
+    text-align: center;
+    font-size: large;
+    padding-top: spacing.$space-normal;
+    padding-bottom: spacing.$space-lg;
+    margin-top: 0;
+  }
+}
