@@ -3,9 +3,11 @@
 
 .card {
   width: 15rem;
-  height: 23rem;
+
+  // height: 23rem;
   padding: spacing.$space-sm;
-  border: 3px solid colors.$card-border;
+  border: 0.2rem solid colors.$card-border;
+  border-radius: 0.2rem;
 
   img {
     width: 100%;
@@ -17,8 +19,9 @@
 
     tr {
       td {
-        // padding-bottom: spacing.$space-sm;
         padding-top: spacing.$space-sm;
+
+        // padding-bottom: spacing.$space-sm;
 
         &:first-child {
           font-weight: bolder;
@@ -35,7 +38,8 @@
     text-align: center;
     font-size: large;
     padding-top: spacing.$space-normal;
-    padding-bottom: spacing.$space-lg;
+
+    // padding-bottom: spacing.$space-lg;
     margin-top: 0;
   }
 }

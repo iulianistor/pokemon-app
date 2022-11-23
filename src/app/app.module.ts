@@ -8,9 +8,10 @@ import { AppComponent } from './app.component';
 import { PokemonComponent } from './pokemon/pokemon.component';
 import { PokemonCollectionComponent } from './pokemon-collection/pokemon-collection.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ButtonComponent } from './button/button.component';
 
 @NgModule({
-  declarations: [AppComponent, PokemonComponent, PokemonCollectionComponent, NavbarComponent],
+  declarations: [AppComponent, PokemonComponent, PokemonCollectionComponent, NavbarComponent, ButtonComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
