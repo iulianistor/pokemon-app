@@ -11,11 +11,14 @@ describe('My First Test', () => {
     cy.contains('Next');
   });
 
-  it('Clicks the "Previous" button on the first page', () => {
+  it('Clicks the "Previous" button on the first page and checks if the content has changed', () => {
+    const firstPokemon = cy.get('pka-pokemon').first();
     cy.contains('Previous').click();
+    firstPokemon.contains('Bulbasaur');
   });
 
-  it('Clicks the "Next" button on the first page', () => {
+  it('Clicks the "Next" button on the first page and checks if the content has changed', () => {
     cy.contains('Next').click();
+    cy.get('pka-pokemon').first().contains('Weedle');
   });
 });
