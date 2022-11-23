@@ -29,7 +29,6 @@ export class PokemonCollectionComponent implements OnInit {
           this.pokemonNames.push(result.name);
         });
       });
-    // this.pageOffset += 12;
     console.log('page: ', this.page);
     console.log('offset:', this.pageOffset);
   }

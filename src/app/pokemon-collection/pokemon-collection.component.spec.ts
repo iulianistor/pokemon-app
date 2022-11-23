@@ -23,7 +23,6 @@ describe('PokemonCollectionComponent', () => {
     fixture = TestBed.createComponent(PokemonCollectionComponent);
     component = fixture.componentInstance;
     service = TestBed.inject(PokemonDataService);
-    // fixture.detectChanges();
   });
 
   afterEach(() => {
@@ -38,7 +37,6 @@ describe('PokemonCollectionComponent', () => {
     spy = spyOn(service, 'getPokemonCollectionData').and.returnValue(
       of(pokemonCollectionMock)
     );
-    // component.ngOnInit();
     fixture.detectChanges();
     expect(component.pokemonNames[0]).toBe('bulbasaur');
     expect(spy).toHaveBeenCalledTimes(1);

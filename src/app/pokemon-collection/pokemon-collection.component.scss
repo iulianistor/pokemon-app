@@ -5,31 +5,8 @@
   display: inline-flex;
   padding: spacing.$space-normal;
   justify-content: center;
-
-  // background-color: colors.$card-background;
 }
 
 pagination-controls {
   text-align: center;
 }
-
-// .pokemon-pagination ::ng-deep .ngx-pagination {
-//   li:first-child {
-//     background-color: #9848ff;
-//     color: white;
-//     padding: 20px 40px;
-//     text-decoration: none;
-//     display: inline-block;
-//     font-size: 16px;
-//     border-radius: 0.25px;
-//   }
-//   li:last-child {
-//     background-color: #9848ff;
-//     color: white;
-//     padding: 20px 40px;
-//     text-decoration: none;
-//     display: inline-block;
-//     font-size: 16px;
-//     border-radius: 0.25px;
-//   }
-// }
