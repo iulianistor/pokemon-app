@@ -30,6 +30,17 @@ export function mapPokemonCollection(
     results: pokemonCollectionData.results,
   };
 }
+
+export function transformToPokemonProfileType(pokemonData: any): any {
+  return {
+    name: pokemonData.name,
+    weight: pokemonData.weight,
+    height: pokemonData.height,
+    src: pokemonData.sprites.other['official-artwork'].front_default,
+    stats: pokemonData.stats,
+    types: pokemonData.types,
+  };
+}
 @Injectable({
   providedIn: 'root',
 })
@@ -56,6 +67,14 @@ export class PokemonDataService {
         }`
       )
       .pipe(map(mapPokemonCollection));
+
+    return data;
+  }
+
+  getPokemonProfileData(name: string): Observable<any> {
+    const data = this.http
+      .get<PokemonDataType>(`${this.apiURL}/${name}`)
+      .pipe(map(transformToPokemonProfileType));
 
     return data;
   }
