@@ -1,3 +1,29 @@
-h1 {
-  color: aqua;
+@use "../../styles/colors";
+@use "../../styles/spacing";
+
+.profile {
+  h1 {
+    text-align: center;
+  }
+
+  table {
+    tr {
+      td {
+        padding-top: spacing.$space-sm;
+
+        ul {
+          padding-left: 1.25rem;
+        }
+
+        &:first-child {
+          vertical-align: text-top;
+          font-weight: bolder;
+        }
+
+        &:last-child {
+          padding-left: 1.25rem;
+        }
+      }
+    }
+  }
 }

@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import {
   PokemonCollectionData,
   PokemonDataType,
+  PokemonProfileType,
   PokemonType,
 } from '../pokemon/types';
 import { map } from 'rxjs/operators';
@@ -31,7 +32,9 @@ export function mapPokemonCollection(
   };
 }
 
-export function transformToPokemonProfileType(pokemonData: any): any {
+export function transformToPokemonProfileType(
+  pokemonData: PokemonDataType
+): PokemonProfileType {
   return {
     name: pokemonData.name,
     weight: pokemonData.weight,
@@ -56,6 +59,14 @@ export class PokemonDataService {
     return data;
   }
 
+  getPokemonProfileData(name: string): Observable<any> {
+    const data = this.http
+      .get<PokemonDataType>(`${this.apiURL}/${name}`)
+      .pipe(map(transformToPokemonProfileType));
+
+    return data;
+  }
+
   getPokemonCollectionData(
     limit: number,
     offset: number
@@ -67,14 +78,6 @@ export class PokemonDataService {
         }`
       )
       .pipe(map(mapPokemonCollection));
-
-    return data;
-  }
-
-  getPokemonProfileData(name: string): Observable<any> {
-    const data = this.http
-      .get<PokemonDataType>(`${this.apiURL}/${name}`)
-      .pipe(map(transformToPokemonProfileType));
 
     return data;
   }
