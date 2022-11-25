@@ -1,26 +1,29 @@
-<div class="profile">
-  <h1>{{ pokemonProfileData.name | titlecase }}</h1>
-  <img src="{{ pokemonProfileData.src }}" alt="{{ pokemonProfileData.name }}" />
-  <table>
-    <tr>
-      <td>Height</td>
-      <td class="table-indent">{{ pokemonProfileData.height }}</td>
-    </tr>
-    <tr>
-      <td>Weight</td>
-      <td>{{ pokemonProfileData.weight }}</td>
-    </tr>
-    <tr>
-      <td>Stats</td>
-      <ul *ngFor="let stat of pokemonProfileData.stats">
-        <li>{{ stat.stat.name | titlecase }}: {{ stat.base_stat }}</li>
-      </ul>
-    </tr>
-    <tr>
-      <td>Types</td>
-      <ul *ngFor="let type of pokemonProfileData.types">
-        <li>{{ type.type.name | titlecase }}</li>
-      </ul>
-    </tr>
-  </table>
-</div>
+<ng-container *ngIf="pokemonProfileData | async as pokemonData">
+  <div class="profile">
+    <h1>{{ pokemonData.name | titlecase }}</h1>
+    <img src="{{ pokemonData.src }}" alt="{{ pokemonData.name }}" />
+    <table>
+      <tr>
+        <td>Height</td>
+        <td class="table-indent">{{ pokemonData.height }}</td>
+      </tr>
+      <tr>
+        <td>Weight</td>
+        <td>{{ pokemonData.weight }}</td>
+      </tr>
+      <tr>
+        <td>Stats</td>
+        <ul *ngFor="let stat of pokemonData.stats">
+          <li>{{ stat.stat.name | titlecase }}: {{ stat.base_stat }}</li>
+        </ul>
+      </tr>
+      <tr>
+        <td>Types</td>
+        <ul *ngFor="let type of pokemonData.types">
+          <li>{{ type.type.name | titlecase }}</li>
+        </ul>
+      </tr>
+    </table>
+  </div>
+  <ng-container> </ng-container
+></ng-container>
