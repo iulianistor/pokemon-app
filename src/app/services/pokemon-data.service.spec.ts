@@ -7,7 +7,6 @@ import {
 import { PokemonDataService } from './pokemon-data.service';
 import { HttpClient } from '@angular/common/http';
 import { pokemonMockTransformed, pokemonMockResponse } from '../pokemonMock';
-import { transformToPokemonType } from './pokemon-data.service';
 
 describe('PokemonDataService', () => {
   let service: PokemonDataService;

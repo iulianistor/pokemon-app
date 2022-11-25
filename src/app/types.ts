@@ -34,22 +34,9 @@ export interface PokemonType {
   name: string;
   weight: number;
   src: string;
-}
-
-export interface PokemonProfileType extends PokemonType {
   stats: PokemonStat[];
   types: PokemonCreatureTypeResource[];
 }
-
-// interface PokemonStatTemp {
-//   basestat: number;
-//   stat_name: string;
-// }
-
-// interface PokemonTypeTemp {
-//   slot: number;
-//   type_name: string;
-// }
 
 interface NameAndUrl {
   name: string;

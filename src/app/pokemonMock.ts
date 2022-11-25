@@ -1,8 +1,4 @@
-import {
-  PokemonCollectionData,
-  PokemonDataType,
-  PokemonType,
-} from './pokemon/types';
+import { PokemonCollectionData, PokemonDataType, PokemonType } from './types';
 
 export const pokemonCollectionMock: PokemonCollectionData = {
   count: 1,

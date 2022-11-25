@@ -2,48 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import {
-  PokemonCollectionData,
-  PokemonDataType,
-  PokemonProfileType,
-  PokemonType,
-} from '../pokemon/types';
+import { PokemonCollectionData, PokemonDataType, PokemonType } from '../types';
 import { map } from 'rxjs/operators';
+import {
+  transformToPokemonProfileType,
+  mapPokemonCollection,
+} from './type-transformers';
 
-export function transformToPokemonType(
-  pokemonData: PokemonDataType
-): PokemonType {
-  return {
-    name: pokemonData.name,
-    weight: pokemonData.weight,
-    height: pokemonData.height,
-    src: pokemonData.sprites.other['official-artwork'].front_default,
-  };
-}
-
-export function mapPokemonCollection(
-  pokemonCollectionData: PokemonCollectionData
-): PokemonCollectionData {
-  return {
-    count: pokemonCollectionData.count,
-    next: pokemonCollectionData.next,
-    previous: pokemonCollectionData.previous,
-    results: pokemonCollectionData.results,
-  };
-}
-
-export function transformToPokemonProfileType(
-  pokemonData: PokemonDataType
-): PokemonProfileType {
-  return {
-    name: pokemonData.name,
-    weight: pokemonData.weight,
-    height: pokemonData.height,
-    src: pokemonData.sprites.other['official-artwork'].front_default,
-    stats: pokemonData.stats,
-    types: pokemonData.types,
-  };
-}
 @Injectable({
   providedIn: 'root',
 })
@@ -52,14 +17,6 @@ export class PokemonDataService {
   constructor(private http: HttpClient) {}
 
   getPokemonData(name: string): Observable<PokemonType> {
-    const data = this.http
-      .get<PokemonDataType>(`${this.apiURL}/${name}`)
-      .pipe(map(transformToPokemonType));
-
-    return data;
-  }
-
-  getPokemonProfileData(name: string): Observable<any> {
     const data = this.http
       .get<PokemonDataType>(`${this.apiURL}/${name}`)
       .pipe(map(transformToPokemonProfileType));

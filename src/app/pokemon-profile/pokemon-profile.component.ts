@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PokemonProfileType } from '../pokemon/types';
+import { PokemonType } from '../types';
 import { PokemonDataService } from '../services/pokemon-data.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { PokemonDataService } from '../services/pokemon-data.service';
 export class PokemonProfileComponent implements OnInit {
   pokemonName: string = '';
 
-  pokemonProfileData: PokemonProfileType = {
+  pokemonProfileData: PokemonType = {
     name: '',
     height: 0,
     weight: 0,
@@ -50,7 +50,7 @@ export class PokemonProfileComponent implements OnInit {
     this.pokemonName = this.route.snapshot.params['name'];
 
     this.pokemonDataService
-      .getPokemonProfileData(this.pokemonName)
+      .getPokemonData(this.pokemonName)
       .subscribe((data) => {
         this.pokemonProfileData = data;
       });
