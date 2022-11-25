@@ -20,8 +20,6 @@
       td {
         padding-top: spacing.$space-sm;
 
-        // padding-bottom: spacing.$space-sm;
-
         &:first-child {
           font-weight: bolder;
         }
@@ -37,8 +35,6 @@
     text-align: center;
     font-size: large;
     padding-top: spacing.$space-normal;
-
-    // padding-bottom: spacing.$space-lg;
     margin-top: 0;
   }
 }

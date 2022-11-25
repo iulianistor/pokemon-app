@@ -8,11 +8,22 @@
 
   table {
     tr {
+      ul {
+        padding-left: 1.25rem;
+        list-style: none;
+      }
+
       td {
         padding-top: spacing.$space-sm;
 
         ul {
-          padding-left: 1.25rem;
+          &:first-child {
+            margin-top: 0;
+          }
+
+          li {
+            padding-top: 0;
+          }
         }
 
         &:first-child {
