@@ -1,9 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { PokemonCollectionData, PokemonDataType, PokemonType } from '../types';
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 import {
   mapPokemonCollection,
   transformToPokemonType,
@@ -19,7 +19,7 @@ export class PokemonDataService {
   getPokemonData(name: string): Observable<PokemonType> {
     const data = this.http
       .get<PokemonDataType>(`${this.apiURL}/${name}`)
-      .pipe(map(transformToPokemonType));
+      .pipe(map(transformToPokemonType), catchError(this.handleError));
 
     return data;
   }
@@ -34,8 +34,12 @@ export class PokemonDataService {
           (offset - 1) * limit
         }`
       )
-      .pipe(map(mapPokemonCollection));
+      .pipe(map(mapPokemonCollection), catchError(this.handleError));
 
     return data;
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    return throwError(() => new Error(error.message));
   }
 }
