@@ -47,6 +47,7 @@ export class PokemonProfileComponent implements OnInit {
   }
 
   onGetPokemonProfile(): void {
+    console.log('Route:', this.route);
     this.pokemonName = this.route.snapshot.params['name'];
 
     this.pokemonDataService
