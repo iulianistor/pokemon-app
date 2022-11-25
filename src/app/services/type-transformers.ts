@@ -11,7 +11,7 @@ export function mapPokemonCollection(
   };
 }
 
-export function transformToPokemonProfileType(
+export function transformToPokemonType(
   pokemonData: PokemonDataType
 ): PokemonType {
   return {

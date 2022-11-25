@@ -5,8 +5,8 @@ import { environment } from 'src/environments/environment';
 import { PokemonCollectionData, PokemonDataType, PokemonType } from '../types';
 import { map } from 'rxjs/operators';
 import {
-  transformToPokemonProfileType,
   mapPokemonCollection,
+  transformToPokemonType,
 } from './type-transformers';
 
 @Injectable({
@@ -19,7 +19,7 @@ export class PokemonDataService {
   getPokemonData(name: string): Observable<PokemonType> {
     const data = this.http
       .get<PokemonDataType>(`${this.apiURL}/${name}`)
-      .pipe(map(transformToPokemonProfileType));
+      .pipe(map(transformToPokemonType));
 
     return data;
   }
