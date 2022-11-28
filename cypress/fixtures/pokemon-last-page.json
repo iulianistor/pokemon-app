@@ -1,0 +1,15 @@
+{
+  "count": 1154,
+  "next": null,
+  "previous": "https://pokeapi.co/api/v2/pokemon?offset=1140&limit=12",
+  "results": [
+    {
+      "name": "basculegion-female",
+      "url": "https://pokeapi.co/api/v2/pokemon/10248/"
+    },
+    {
+      "name": "enamorus-therian",
+      "url": "https://pokeapi.co/api/v2/pokemon/10249/"
+    }
+  ]
+}
