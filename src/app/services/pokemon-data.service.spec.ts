@@ -6,7 +6,7 @@ import {
 
 import { PokemonDataService } from './pokemon-data.service';
 import { HttpClient } from '@angular/common/http';
-import { pokemonMockTransformed, pokemonMockResponse } from './pokemonMock';
+import { pokemonMockTransformed, pokemonMockResponse } from '../pokemonMock';
 import { transformToPokemonType } from './pokemon-data.service';
 
 describe('PokemonDataService', () => {
@@ -31,7 +31,7 @@ describe('PokemonDataService', () => {
   });
 
   it('should test the HTTP GET request', (done: DoneFn) => {
-    service.getPokemonData().subscribe((item) => {
+    service.getPokemonData('bulbasaur').subscribe((item) => {
       // This verifies the observable when it resolves and checks if its result matches the mock data
       expect(item).toEqual(pokemonMockTransformed);
       done();
@@ -40,7 +40,9 @@ describe('PokemonDataService', () => {
     // Expect that a single request has been made which matches the given URL, and return its mock.
     // If no such request has been made, or more than one such request has been made,
     // fail with an error message including the given request description, if any.
-    const req = httpMock.expectOne('https://pokeapi.co/api/v2/pokemon/1');
+    const req = httpMock.expectOne(
+      'https://pokeapi.co/api/v2/pokemon/bulbasaur'
+    );
     // Check if the request is GET
     expect(req.request.method).toEqual('GET');
     // Check if the correct data was resturned using subscribe callback

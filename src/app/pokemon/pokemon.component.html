@@ -1,4 +1,4 @@
-<div *ngIf="[pokemonData]" class="card">
+<div class="card">
   <h1>{{ pokemonData.name | titlecase }}</h1>
   <img src="{{ pokemonData.src }}" alt="{{ pokemonData.name }}" />
   <table>
@@ -11,9 +11,4 @@
       <td>{{ pokemonData.weight }}</td>
     </tr>
   </table>
-</div>
-
-<div>
-  <p>API data</p>
-  {{ pokemonData | json }}
 </div>

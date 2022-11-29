@@ -1,11 +1,11 @@
-@use "../../styles/theme/colors";
-@use "../../styles/theme/spacing";
+@use "../../styles/colors";
+@use "../../styles/spacing";
 
 .card {
-  background-color: colors.$card-background;
   width: 15rem;
   height: 23rem;
   padding: spacing.$space-sm;
+  border: 3px solid colors.$card-border;
 
   img {
     width: 100%;
@@ -17,7 +17,6 @@
 
     tr {
       td {
-        padding-bottom: spacing.$space-sm;
         padding-top: spacing.$space-sm;
 
         &:first-child {

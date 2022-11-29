@@ -1,12 +1,12 @@
-import {
-  HttpClient,
-  HttpResponse,
-  HttpErrorResponse,
-} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { PokemonDataType, PokemonType } from '../pokemon/pokemon';
+import {
+  PokemonCollectionData,
+  PokemonDataType,
+  PokemonType,
+} from '../pokemon/types';
 import { map } from 'rxjs/operators';
 
 export function transformToPokemonType(
@@ -16,7 +16,18 @@ export function transformToPokemonType(
     name: pokemonData.name,
     weight: pokemonData.weight,
     height: pokemonData.height,
-    src: pokemonData.sprites.other.dream_world.front_default,
+    src: pokemonData.sprites.other['official-artwork'].front_default,
+  };
+}
+
+export function mapPokemonCollection(
+  pokemonCollectionData: PokemonCollectionData
+): PokemonCollectionData {
+  return {
+    count: pokemonCollectionData.count,
+    next: pokemonCollectionData.next,
+    previous: pokemonCollectionData.previous,
+    results: pokemonCollectionData.results,
   };
 }
 @Injectable({
@@ -25,10 +36,26 @@ export function transformToPokemonType(
 export class PokemonDataService {
   private apiURL = environment.baseUrl;
   constructor(private http: HttpClient) {}
-  getPokemonData(): Observable<PokemonType> {
+
+  getPokemonData(name: string): Observable<PokemonType> {
     const data = this.http
-      .get<PokemonDataType>(`${this.apiURL}/1`)
+      .get<PokemonDataType>(`${this.apiURL}/${name}`)
       .pipe(map(transformToPokemonType));
+
+    return data;
+  }
+
+  getPokemonCollectionData(
+    limit: number,
+    offset: number
+  ): Observable<PokemonCollectionData> {
+    const data = this.http
+      .get<PokemonCollectionData>(
+        `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${
+          (offset - 1) * limit
+        }`
+      )
+      .pipe(map(mapPokemonCollection));
 
     return data;
   }

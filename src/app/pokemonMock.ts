@@ -1,17 +1,28 @@
-import { PokemonDataType, PokemonType } from '../pokemon/pokemon';
+import {
+  PokemonCollectionData,
+  PokemonDataType,
+  PokemonType,
+} from './pokemon/types';
+
+export const pokemonCollectionMock: PokemonCollectionData = {
+  count: 1,
+  next: 'https://pokeapi.co/api/v2/pokemon?offset=20&limit=20',
+  previous: null,
+  results: [{ name: 'bulbasaur', url: 'link' }],
+};
 
 export const pokemonMockTransformed: PokemonType = {
   name: 'bulbasaur',
   weight: 69,
   height: 7,
-  src: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg',
+  src: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png',
 };
 
 export const pokemonMockTransformedSecond: PokemonType = {
   name: 'bulbasaur',
   weight: 69,
   height: 8,
-  src: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg',
+  src: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png',
 };
 
 export const pokemonMockResponse: PokemonDataType = {

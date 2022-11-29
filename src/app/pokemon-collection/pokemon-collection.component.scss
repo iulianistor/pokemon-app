@@ -1,0 +1,12 @@
+@use "../../styles/colors";
+@use "../../styles/spacing";
+
+.grid-container {
+  display: inline-flex;
+  padding: spacing.$space-normal;
+  justify-content: center;
+}
+
+pagination-controls {
+  text-align: center;
+}

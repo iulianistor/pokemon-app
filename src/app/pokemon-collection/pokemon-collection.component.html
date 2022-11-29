@@ -1,0 +1,13 @@
+<div
+  class="grid-container content"
+  *ngFor="
+    let name of pokemonNames
+      | paginate
+        : { itemsPerPage: 12, currentPage: page, totalItems: totalPokemons }
+  "
+>
+  <pka-pokemon [pokemonName]="name"></pka-pokemon>
+</div>
+<pagination-controls
+  (pageChange)="page = $event; pokemonNames = []; getPokemons()"
+></pagination-controls>
