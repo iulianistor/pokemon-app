@@ -17,25 +17,6 @@ export class PokemonComponent implements OnInit, OnDestroy {
     height: 0,
     weight: 0,
     src: '',
-    // stats: [
-    //   {
-    //     base_stat: 0,
-    //     effort: 0,
-    //     stat: {
-    //       name: '',
-    //       url: '',
-    //     },
-    //   },
-    // ],
-    // types: [
-    //   {
-    //     slot: 0,
-    //     type: {
-    //       name: '',
-    //       url: '',
-    //     },
-    //   },
-    // ],
   };
 
   constructor(private pokemonDataService: PokemonDataService) {}

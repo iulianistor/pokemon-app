@@ -1,5 +1,7 @@
+@use "../../styles/colors";
+
 button {
-  border-color: #423f3f;
+  border-color: colors.$button-border;
   border-style: solid;
   border-width: 0.063rem;
   border-radius: 0.19rem;
