@@ -1,24 +1,57 @@
-describe('My First Test', () => {
-  it('Visits the PokeApp default localhost', () => {
+describe('Pagination tests', () => {
+  it('checks that the the first pokemon is rendered', () => {
+    cy.intercept('GET', 'https://pokeapi.co/api/v2/pokemon?limit=12&offset=0', {
+      fixture: 'pokemon-first-page.json',
+    });
+    cy.intercept('GET', 'https://pokeapi.co/api/v2/pokemon/*', {
+      fixture: 'pokemon-1.json',
+    });
     cy.visit('http://localhost:4200/');
+    cy.get('pka-pokemon').first().contains('Wulbasaur');
   });
 
-  it('Finds the "Previous" button', () => {
-    cy.contains('Previous');
-  });
-
-  it('Finds the "Next" button', () => {
-    cy.contains('Next');
-  });
-
-  it('Clicks the "Previous" button on the first page and checks if the content has changed', () => {
-    const firstPokemon = cy.get('pka-pokemon').first();
+  it('checks that the the "Previous" button is disabled on the first page', () => {
+    cy.intercept('GET', 'https://pokeapi.co/api/v2/pokemon?limit=12&offset=0', {
+      fixture: 'pokemon-first-page.json',
+    });
+    cy.intercept('GET', 'https://pokeapi.co/api/v2/pokemon/*', {
+      fixture: 'pokemon-1.json',
+    });
+    cy.visit('http://localhost:4200/');
     cy.contains('Previous').click();
-    firstPokemon.contains('Bulbasaur');
+    cy.get('pka-pokemon').first().contains('Wulbasaur');
   });
 
-  it('Clicks the "Next" button on the first page and checks if the content has changed', () => {
+  it('checks that the "Next" button is enabled and renders a different pokemon', () => {
+    cy.intercept(
+      'GET',
+      'https://pokeapi.co/api/v2/pokemon?limit=12&offset=12',
+      {
+        fixture: 'pokemon-second-page.json',
+      }
+    );
+    cy.intercept('GET', 'https://pokeapi.co/api/v2/pokemon/*', {
+      fixture: 'pokemon-13.json',
+    });
+    cy.visit('http://localhost:4200/');
     cy.contains('Next').click();
-    cy.get('pka-pokemon').first().contains('Weedle');
+    cy.get('pka-pokemon').first().contains('Teedle');
+  });
+
+  it('checks that the "Next" button is disabled on the last page by clicking it twice', () => {
+    cy.intercept(
+      'GET',
+      'https://pokeapi.co/api/v2/pokemon?limit=12&offset=1152',
+      {
+        fixture: 'pokemon-last-page.json',
+      }
+    );
+    cy.intercept('GET', 'https://pokeapi.co/api/v2/pokemon/*', {
+      fixture: 'pokemon-10248.json',
+    });
+    cy.visit('http://localhost:4200/');
+    cy.contains('Next').click();
+    cy.contains('Next').click();
+    cy.get('pka-pokemon').first().contains('Masculegion-female');
   });
 });

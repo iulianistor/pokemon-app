@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonCollectionData, Result } from '../types';
+import { environment } from 'src/environments/environment';
 import { PokemonDataService } from '../services/pokemon-data.service';
 
 @Component({
@@ -19,17 +20,14 @@ export class PokemonCollectionComponent implements OnInit {
     this.getPokemons();
   }
 
-  //Could the limit (12) be an environment variable? We're using the number of items to be displayed on a page in several places
   getPokemons() {
     this.pokemonDataService
-      .getPokemonCollectionData(12, this.page)
+      .getPokemonCollectionData(environment.pokemonsPerPage, this.page)
       .subscribe((response: PokemonCollectionData) => {
         this.totalPokemons = response.count;
         response.results.forEach((result: Result) => {
           this.pokemonNames.push(result.name);
         });
       });
-    console.log('page: ', this.page);
-    console.log('offset:', this.pageOffset);
   }
 }
