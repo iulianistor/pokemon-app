@@ -58,5 +58,6 @@ describe('Pokemon profile tests', () => {
     cy.get('pka-pokemon-collection').first().contains('Wulbasaur');
     cy.get('pka-pokemon-collection').contains('Previous');
     cy.get('pka-pokemon-collection').contains('Next');
+    cy.get('pka-pokemon-collection').contains('Learn more');
   });
 });
