@@ -1,26 +1,31 @@
 <div class="profile">
   <h1>{{ pokemonProfileData.name | titlecase }}</h1>
-  <img src="{{ pokemonProfileData.src }}" alt="{{ pokemonProfileData.name }}" />
-  <table>
-    <tr>
-      <td>Height</td>
-      <td class="table-indent">{{ pokemonProfileData.height }}</td>
-    </tr>
-    <tr>
-      <td>Weight</td>
-      <td>{{ pokemonProfileData.weight }}</td>
-    </tr>
-    <tr>
-      <td>Stats</td>
-      <ul *ngFor="let stat of pokemonProfileData.stats">
-        <li>{{ stat.stat.name | titlecase }}: {{ stat.base_stat }}</li>
-      </ul>
-    </tr>
-    <tr>
-      <td>Types</td>
-      <ul *ngFor="let type of pokemonProfileData.types">
-        <li>{{ type.type.name | titlecase }}</li>
-      </ul>
-    </tr>
-  </table>
+  <div class="profile-content">
+    <img
+      src="{{ pokemonProfileData.src }}"
+      alt="{{ pokemonProfileData.name }}"
+    />
+    <table>
+      <tr>
+        <td>Height</td>
+        <td class="table-indent">{{ pokemonProfileData.height }}</td>
+      </tr>
+      <tr>
+        <td>Weight</td>
+        <td>{{ pokemonProfileData.weight }}</td>
+      </tr>
+      <tr>
+        <td>Stats</td>
+        <ul *ngFor="let stat of pokemonProfileData.stats">
+          <li>{{ stat.stat.name | titlecase }}: {{ stat.base_stat }}</li>
+        </ul>
+      </tr>
+      <tr>
+        <td>Types</td>
+        <ul *ngFor="let type of pokemonProfileData.types">
+          <li>{{ type.type.name | titlecase }}</li>
+        </ul>
+      </tr>
+    </table>
+  </div>
 </div>
