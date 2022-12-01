@@ -7,40 +7,38 @@
   }
 
   .profile-content {
-    border: 0.2rem solid colors.$card-border;
-    padding-left: 6.25rem;
-    padding-right: 6.25rem;
+    border: spacing.$space-xs solid colors.$card-border;
+    padding-left: spacing.$space-xxl;
+    padding-right: spacing.$space-xxl;
+  }
+}
 
-    table {
-      tr {
-        ul {
-          padding-left: 1.25rem;
-          list-style: none;
-        }
+.properties {
+  ul {
+    padding-left: spacing.$space-l;
+    list-style: none;
+  }
 
-        td {
-          padding-top: spacing.$space-sm;
+  td {
+    padding-top: spacing.$space-sm;
 
-          ul {
-            &:first-child {
-              margin-top: 0;
-            }
-
-            li {
-              padding-top: 0;
-            }
-          }
-
-          &:first-child {
-            vertical-align: text-top;
-            font-weight: bolder;
-          }
-
-          &:last-child {
-            padding-left: 1.25rem;
-          }
-        }
+    ul {
+      &:first-child {
+        margin-top: 0;
       }
+
+      li {
+        padding-top: 0;
+      }
+    }
+
+    &:first-child {
+      vertical-align: text-top;
+      font-weight: bolder;
+    }
+
+    &:last-child {
+      padding-left: spacing.$space-l;
     }
   }
 }

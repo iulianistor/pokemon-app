@@ -48,11 +48,12 @@ describe('Pagination tests', () => {
     );
     cy.intercept('GET', 'https://pokeapi.co/api/v2/pokemon/*', {
       fixture: 'pokemon-10248.json',
-    });
+    }).as('getPokemon');
     cy.visit('/');
-    cy.wait(10000);
-    cy.contains('Next').click();
-    cy.contains('Next').click();
-    cy.get('pka-pokemon').first().contains('Masculegion-female');
+    cy.wait('@getPokemon').then(() => {
+      cy.contains('Next').click();
+      cy.contains('Next').click();
+      cy.get('pka-pokemon').first().contains('Masculegion-female');
+    });
   });
 });

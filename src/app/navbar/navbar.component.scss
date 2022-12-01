@@ -12,6 +12,9 @@
   align-items: center;
   background-color: colors.$toolbar-background;
   font-weight: 600;
+  height: spacing.$space-xxl;
+  margin: 0 auto;
+  max-width: 75rem;
 }
 
 .toolbar img {

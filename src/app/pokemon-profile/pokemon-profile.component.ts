@@ -1,14 +1,17 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PokemonType } from '../types';
 import { PokemonDataService } from '../services/pokemon-data.service';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'pka-pokemon-profile',
   templateUrl: './pokemon-profile.component.html',
   styleUrls: ['./pokemon-profile.component.scss'],
 })
-export class PokemonProfileComponent implements OnInit {
+export class PokemonProfileComponent implements OnInit, OnDestroy {
+  destroy$ = new Subject<void>();
+
   pokemonName: string = '';
 
   pokemonProfileData: PokemonType = {
@@ -47,13 +50,18 @@ export class PokemonProfileComponent implements OnInit {
   }
 
   onGetPokemonProfile(): void {
-    console.log('Route:', this.route);
     this.pokemonName = this.route.snapshot.params['name'];
 
     this.pokemonDataService
       .getPokemonData(this.pokemonName)
+      .pipe(takeUntil(this.destroy$))
       .subscribe((data) => {
         this.pokemonProfileData = data;
       });
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

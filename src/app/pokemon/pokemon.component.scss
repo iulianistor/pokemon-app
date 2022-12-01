@@ -1,32 +1,30 @@
 @use "../../styles/colors";
 @use "../../styles/spacing";
 
+.pokemon-image {
+  width: 100%;
+  height: auto;
+}
+
 .card {
-  width: 15rem;
+  width: spacing.$card-space-l;
   height: 100%;
   padding: spacing.$space-sm;
   border: 0.2rem solid colors.$card-border;
   border-radius: 0.2rem;
 
-  img {
-    width: 100%;
-    height: auto;
-  }
-
   table {
     padding-left: spacing.$space-md;
 
-    tr {
-      td {
-        padding-top: spacing.$space-sm;
+    td {
+      padding-top: spacing.$space-sm;
 
-        &:first-child {
-          font-weight: bolder;
-        }
+      &:first-child {
+        font-weight: bolder;
+      }
 
-        &:last-child {
-          padding-left: 1.9rem;
-        }
+      &:last-child {
+        padding-left: 1.9rem;
       }
     }
   }
