@@ -34,6 +34,8 @@ export interface PokemonType {
   name: string;
   weight: number;
   src: string;
+  stats?: PokemonStat[];
+  types?: PokemonCreatureTypeResource[];
 }
 
 interface NameAndUrl {

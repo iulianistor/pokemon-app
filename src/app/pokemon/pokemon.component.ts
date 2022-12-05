@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { PokemonDataService } from '../services/pokemon-data.service';
-import { PokemonType } from './types';
+import { PokemonType } from '../types';
 
 @Component({
   selector: 'pka-pokemon',
@@ -12,7 +12,12 @@ export class PokemonComponent implements OnInit, OnDestroy {
   @Input() pokemonName: string = '';
   destroy$ = new Subject<void>();
 
-  pokemonData: PokemonType = { name: '', height: 0, weight: 0, src: '' };
+  pokemonData: PokemonType = {
+    name: '',
+    height: 0,
+    weight: 0,
+    src: '',
+  };
 
   constructor(private pokemonDataService: PokemonDataService) {}
 

@@ -1,0 +1,13 @@
+@use "../../styles/colors";
+
+button {
+  border-color: colors.$button-border;
+  border-style: solid;
+  border-width: 0.063rem;
+  border-radius: 0.19rem;
+  background-color: inherit;
+  padding: 0.6rem 1.25rem;
+  cursor: pointer;
+  margin-left: 4rem;
+  margin-top: 0.75rem;
+}

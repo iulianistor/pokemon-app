@@ -1,31 +1,30 @@
 @use "../../styles/colors";
 @use "../../styles/spacing";
 
-.card {
-  width: 15rem;
-  height: 23rem;
-  padding: spacing.$space-sm;
-  border: 3px solid colors.$card-border;
+.pokemon-image {
+  width: 100%;
+  height: auto;
+}
 
-  img {
-    width: 100%;
-    height: auto;
-  }
+.card {
+  width: spacing.$card-space-l;
+  height: 100%;
+  padding: spacing.$space-sm;
+  border: 0.2rem solid colors.$card-border;
+  border-radius: 0.2rem;
 
   table {
     padding-left: spacing.$space-md;
 
-    tr {
-      td {
-        padding-top: spacing.$space-sm;
+    td {
+      padding-top: spacing.$space-sm;
 
-        &:first-child {
-          font-weight: bolder;
-        }
+      &:first-child {
+        font-weight: bolder;
+      }
 
-        &:last-child {
-          padding-left: 1.9rem;
-        }
+      &:last-child {
+        padding-left: 1.9rem;
       }
     }
   }
@@ -34,7 +33,6 @@
     text-align: center;
     font-size: large;
     padding-top: spacing.$space-normal;
-    padding-bottom: spacing.$space-lg;
     margin-top: 0;
   }
 }

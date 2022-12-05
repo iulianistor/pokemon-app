@@ -1,6 +1,10 @@
 <div class="card">
   <h1>{{ pokemonData.name | titlecase }}</h1>
-  <img src="{{ pokemonData.src }}" alt="{{ pokemonData.name }}" />
+  <img
+    src="{{ pokemonData.src }}"
+    alt="{{ pokemonData.name }}"
+    class="pokemon-image"
+  />
   <table>
     <tr>
       <td>Height</td>
@@ -11,4 +15,5 @@
       <td>{{ pokemonData.weight }}</td>
     </tr>
   </table>
+  <pka-button routerLink="{{ '/pokemon/' + pokemonData.name }}"></pka-button>
 </div>

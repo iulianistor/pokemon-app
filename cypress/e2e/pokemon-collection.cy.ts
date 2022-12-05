@@ -6,7 +6,7 @@ describe('Pagination tests', () => {
     cy.intercept('GET', 'https://pokeapi.co/api/v2/pokemon/*', {
       fixture: 'pokemon-1.json',
     });
-    cy.visit('http://localhost:4200/');
+    cy.visit('/');
     cy.get('pka-pokemon').first().contains('Wulbasaur');
   });
 
@@ -17,7 +17,7 @@ describe('Pagination tests', () => {
     cy.intercept('GET', 'https://pokeapi.co/api/v2/pokemon/*', {
       fixture: 'pokemon-1.json',
     });
-    cy.visit('http://localhost:4200/');
+    cy.visit('/');
     cy.contains('Previous').click();
     cy.get('pka-pokemon').first().contains('Wulbasaur');
   });
@@ -33,7 +33,7 @@ describe('Pagination tests', () => {
     cy.intercept('GET', 'https://pokeapi.co/api/v2/pokemon/*', {
       fixture: 'pokemon-13.json',
     });
-    cy.visit('http://localhost:4200/');
+    cy.visit('/');
     cy.contains('Next').click();
     cy.get('pka-pokemon').first().contains('Teedle');
   });
@@ -48,10 +48,12 @@ describe('Pagination tests', () => {
     );
     cy.intercept('GET', 'https://pokeapi.co/api/v2/pokemon/*', {
       fixture: 'pokemon-10248.json',
+    }).as('getPokemon');
+    cy.visit('/');
+    cy.wait('@getPokemon').then(() => {
+      cy.contains('Next').click();
+      cy.contains('Next').click();
+      cy.get('pka-pokemon').first().contains('Masculegion-female');
     });
-    cy.visit('http://localhost:4200/');
-    cy.contains('Next').click();
-    cy.contains('Next').click();
-    cy.get('pka-pokemon').first().contains('Masculegion-female');
   });
 });
