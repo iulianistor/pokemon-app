@@ -58,6 +58,7 @@ export class PokemonProfileComponent implements OnInit, OnDestroy {
       .subscribe((data) => {
         this.pokemonProfileData = data;
       });
+    console.log('SRC: ', this.pokemonProfileData.src);
   }
 
   ngOnDestroy() {
