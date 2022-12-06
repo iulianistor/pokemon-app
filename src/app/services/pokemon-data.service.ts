@@ -6,6 +6,7 @@ import { PokemonCollectionData, PokemonDataType, PokemonType } from '../types';
 import { map, catchError } from 'rxjs/operators';
 import {
   mapPokemonCollection,
+  tranformToPokemonNamesArray,
   transformToPokemonType,
 } from './type-transformers';
 
@@ -41,5 +42,24 @@ export class PokemonDataService {
 
   private handleError(error: HttpErrorResponse) {
     return throwError(() => new Error(error.message));
+  }
+
+  getAllPokemonNames(): Observable<string[]> {
+    const data = this.http
+      .get<PokemonCollectionData>(
+        `https://pokeapi.co/api/v2/pokemon?offset=0&limit=1154`
+      )
+      .pipe(map(mapPokemonCollection), catchError(this.handleError))
+      .pipe(map(tranformToPokemonNamesArray));
+    return data;
+  }
+
+  // given a string, this funtion will return an array of names that start with the given string
+  getAllValidPokemons(inputString: string, allNames: string[]): string[] {
+    let filtered: string[] = [];
+    allNames.forEach((item) => {
+      if (item.includes(inputString)) filtered.push(item);
+    });
+    return filtered;
   }
 }

@@ -12,6 +12,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ButtonComponent } from './button/button.component';
 import { PokemonProfileComponent } from './pokemon-profile/pokemon-profile.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
     HttpClientModule,
     NgxPaginationModule,
     FontAwesomeModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

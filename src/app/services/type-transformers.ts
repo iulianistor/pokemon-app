@@ -23,3 +23,13 @@ export function transformToPokemonType(
     types: pokemonData.types,
   };
 }
+
+export function tranformToPokemonNamesArray(
+  pokemons: PokemonCollectionData
+): string[] {
+  let names: string[] = [];
+  pokemons.results.forEach((result) => {
+    names.push(result.name);
+  });
+  return names;
+}
