@@ -18,7 +18,5 @@ export class SearchBarComponent implements OnInit {
 
   onSearchValueChanged() {
     this.pokemonDataService.searchString.emit(this.enteredSearchValue);
-
-    // console.log('Search value: ', this.enteredSearchValue);
   }
 }
