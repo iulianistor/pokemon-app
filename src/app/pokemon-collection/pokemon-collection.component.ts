@@ -14,7 +14,14 @@ export class PokemonCollectionComponent implements OnInit, OnDestroy {
   searchText: string = '';
 
   constructor(private pokemonDataService: PokemonDataService) {
-    this.searchText = this.pokemonDataService.searchString;
+    this.pokemonDataService.searchString.subscribe((data) => {
+      this.searchText = data;
+    });
+
+    this.pokemonDataService.filteredPokeNames.subscribe((data) => {
+      console.log('DATA: ', data);
+      this.filteredPokemonNames = data;
+    });
   }
   pokemonNames: string[] = [];
 
@@ -22,7 +29,6 @@ export class PokemonCollectionComponent implements OnInit, OnDestroy {
   totalPokemons: number = 1;
   pageOffset: number = 0;
 
-  allPokemonNames: string[] = [];
   filteredPokemonNames: string[] = [];
 
   ngOnInit(): void {
@@ -30,35 +36,16 @@ export class PokemonCollectionComponent implements OnInit, OnDestroy {
   }
 
   getPokemons() {
-    if (this.searchText == '') {
-      this.pokemonDataService
-        .getPokemonCollectionData(environment.pokemonsPerPage, this.page)
-        .pipe(takeUntil(this.destroy$))
-        .subscribe((response: PokemonCollectionData) => {
-          this.totalPokemons = response.count;
-          response.results.forEach((result: Result) => {
-            this.pokemonNames.push(result.name);
-          });
+    this.pokemonDataService
+      .getPokemonCollectionData(environment.pokemonsPerPage, this.page)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((response: PokemonCollectionData) => {
+        this.totalPokemons = response.count;
+        response.results.forEach((result: Result) => {
+          this.pokemonNames.push(result.name);
         });
-      console.log(this.pokemonNames);
-    } else {
-      console.log('all pokemons', this.allPokemonNames);
-      this.pokemonDataService
-        .getAllPokemonNames()
-        .pipe(takeUntil(this.destroy$))
-        .subscribe((response) => {
-          response.forEach((item) => {
-            this.allPokemonNames.push(item);
-          });
-          this.filteredPokemonNames =
-            this.pokemonDataService.getAllValidPokemons(
-              this.searchText,
-              this.allPokemonNames
-            );
-          this.totalPokemons = this.filteredPokemonNames.length;
-          console.log('filtered pokemons', this.filteredPokemonNames);
-        });
-    }
+      });
+    console.log(this.pokemonNames);
   }
   ngOnDestroy() {
     this.destroy$.next();

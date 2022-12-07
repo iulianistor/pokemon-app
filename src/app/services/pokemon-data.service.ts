@@ -1,5 +1,5 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { PokemonCollectionData, PokemonDataType, PokemonType } from '../types';
@@ -15,10 +15,23 @@ import {
 })
 export class PokemonDataService {
   private apiURL = environment.baseUrl;
+  pokeNames: string[] = [];
+  public filteredPokeNames: EventEmitter<string[]> = new EventEmitter<
+    string[]
+  >();
+  public searchString: EventEmitter<string> = new EventEmitter<string>();
 
-  public searchString: string = '';
+  constructor(private http: HttpClient) {
+    this.getAllPokemonNames().subscribe((response) => {
+      this.pokeNames = response;
+    });
 
-  constructor(private http: HttpClient) {}
+    this.searchString.subscribe((data) => {
+      this.filteredPokeNames.emit(
+        this.getAllValidPokemons(data, this.pokeNames)
+      );
+    });
+  }
 
   getPokemonData(name: string): Observable<PokemonType> {
     const data = this.http
