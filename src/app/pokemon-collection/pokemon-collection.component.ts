@@ -11,14 +11,17 @@ import { Subject, takeUntil } from 'rxjs';
 })
 export class PokemonCollectionComponent implements OnInit, OnDestroy {
   destroy$ = new Subject<void>();
-  constructor(private pokemonDataService: PokemonDataService) {}
+  searchText: string = '';
+
+  constructor(private pokemonDataService: PokemonDataService) {
+    this.searchText = this.pokemonDataService.searchString;
+  }
   pokemonNames: string[] = [];
 
   page: number = 1;
   totalPokemons: number = 1;
   pageOffset: number = 0;
 
-  searchText: string = 'cha';
   allPokemonNames: string[] = [];
   filteredPokemonNames: string[] = [];
 
@@ -27,7 +30,7 @@ export class PokemonCollectionComponent implements OnInit, OnDestroy {
   }
 
   getPokemons() {
-    if (this.searchText !== '') {
+    if (this.searchText == '') {
       this.pokemonDataService
         .getPokemonCollectionData(environment.pokemonsPerPage, this.page)
         .pipe(takeUntil(this.destroy$))
@@ -38,7 +41,8 @@ export class PokemonCollectionComponent implements OnInit, OnDestroy {
           });
         });
       console.log(this.pokemonNames);
-
+    } else {
+      console.log('all pokemons', this.allPokemonNames);
       this.pokemonDataService
         .getAllPokemonNames()
         .pipe(takeUntil(this.destroy$))
@@ -51,13 +55,9 @@ export class PokemonCollectionComponent implements OnInit, OnDestroy {
               this.searchText,
               this.allPokemonNames
             );
+          this.totalPokemons = this.filteredPokemonNames.length;
           console.log('filtered pokemons', this.filteredPokemonNames);
         });
-      console.log('tutti pokemoni', this.allPokemonNames);
-
-      console.log('filtered pokemons', this.filteredPokemonNames);
-    } else {
-      console.log('Search text found');
     }
   }
   ngOnDestroy() {

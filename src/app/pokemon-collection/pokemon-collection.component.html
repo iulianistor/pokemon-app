@@ -1,13 +1,32 @@
-<div
-  class="grid-container content"
-  *ngFor="
-    let name of pokemonNames
-      | paginate
-        : { itemsPerPage: 12, currentPage: page, totalItems: totalPokemons }
-  "
->
-  <pka-pokemon [pokemonName]="name"></pka-pokemon>
+<div *ngIf="searchText === ''; else elseBlock">
+  <div
+    class="grid-container content"
+    *ngFor="
+      let name of pokemonNames
+        | paginate
+          : { itemsPerPage: 12, currentPage: page, totalItems: totalPokemons }
+    "
+  >
+    <pka-pokemon [pokemonName]="name"></pka-pokemon>
+  </div>
+  <pagination-controls
+    (pageChange)="page = $event; pokemonNames = []; getPokemons()"
+  ></pagination-controls>
 </div>
-<pagination-controls
-  (pageChange)="page = $event; pokemonNames = []; getPokemons()"
-></pagination-controls>
+<ng-template #elseBlock>
+  <!-- <p>{{ searchText }}</p> -->
+
+  <div
+    class="grid-container content"
+    *ngFor="
+      let name of filteredPokemonNames
+        | paginate
+          : { itemsPerPage: 12, currentPage: page, totalItems: totalPokemons }
+    "
+  >
+    <pka-pokemon [pokemonName]="name"></pka-pokemon>
+  </div>
+  <pagination-controls
+    (pageChange)="page = $event; pokemonNames = []; getPokemons()"
+  ></pagination-controls>
+</ng-template>

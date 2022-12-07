@@ -1,10 +1,11 @@
 <form class="form-wrapper">
   <input
     class="form-item"
-    [(ngModel)]="searchValue"
+    [(ngModel)]="enteredSearchValue"
     placeholder="Search Pokemon..."
-    (input)="(onSearchValueChanged)"
+    (input)="onSearchValueChanged()"
     name="search"
+    autocomplete="off"
   />
   <fa-icon [icon]="faSearch"></fa-icon>
 </form>

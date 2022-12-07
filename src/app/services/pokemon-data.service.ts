@@ -15,6 +15,9 @@ import {
 })
 export class PokemonDataService {
   private apiURL = environment.baseUrl;
+
+  public searchString: string = '';
+
   constructor(private http: HttpClient) {}
 
   getPokemonData(name: string): Observable<PokemonType> {
@@ -58,7 +61,7 @@ export class PokemonDataService {
   getAllValidPokemons(inputString: string, allNames: string[]): string[] {
     let filtered: string[] = [];
     allNames.forEach((item) => {
-      if (item.includes(inputString)) filtered.push(item);
+      if (item.startsWith(inputString)) filtered.push(item);
     });
     return filtered;
   }
